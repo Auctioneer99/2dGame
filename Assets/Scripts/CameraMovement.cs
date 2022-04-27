@@ -14,9 +14,9 @@ namespace Assets.Scripts
         void Update()
         {
             Vector3 deltaVector = Input.mousePosition;
-            deltaVector.z = deltaVector.x / (Screen.width / 2) - 1;
+            deltaVector.x = deltaVector.x / (Screen.width / 2) - 1;
             deltaVector.y = deltaVector.y / (Screen.height / 2) - 1;
-            deltaVector.x = 0;
+            deltaVector.z = 0;
 
             Move(deltaVector);
         }
@@ -24,7 +24,7 @@ namespace Assets.Scripts
         public void Move(Vector3 deltaVector)
         {
             deltaVector *= _range;
-            deltaVector.x = _distanceFromObject;
+            deltaVector.z = -_distanceFromObject;
 
             _camera.transform.position = _target.transform.position + deltaVector;
             Quaternion lookRotation = Quaternion.LookRotation(_target.transform.position - _camera.transform.position, Vector3.up);
