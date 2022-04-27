@@ -6,7 +6,7 @@ namespace Assets.Scripts
     {
         [SerializeField] private CharacterMovement _movement;
 
-        private void Update()
+        private void FixedUpdate()
         {
             float horizontal = Input.GetAxis("Horizontal");
 
@@ -16,6 +16,12 @@ namespace Assets.Scripts
             if (jump)
             {
                 _movement.Jump();
+            }
+
+            bool changeFravity = Input.GetKey(KeyCode.E);
+            if (changeFravity)
+            {
+                _movement.ChangeGravity();
             }
         }
     }
