@@ -44,8 +44,14 @@ public class PlayerController : MonoBehaviour
         _inputs.RawY = (int)Input.GetAxisRaw("Vertical");
         _inputs.X = Input.GetAxis("Horizontal");
         _inputs.Y = Input.GetAxis("Vertical");
-
-        _anim.SetInteger("RawY", _inputs.RawY);
+        if (Math.Abs(_inputs.X) > 0 && IsGrounded)
+        {
+            _anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            _anim.SetBool("isWalking", false);
+        }
 
         _facingLeft = _inputs.RawX != 1 && (_inputs.RawX == -1 || _facingLeft);
         if (!_grabbing) SetFacingDirection(_facingLeft); // Don't turn while grabbing the wall
@@ -83,7 +89,6 @@ public class PlayerController : MonoBehaviour
             _hasJumped = false;
             _currentMovementLerpSpeed = 100;
             PlayRandomClip(_landClips);
-            _anim.SetBool("Grounded", true);
             OnTouchedGround?.Invoke();
             transform.SetParent(_ground[0].transform);
         }
@@ -91,8 +96,17 @@ public class PlayerController : MonoBehaviour
         {
             IsGrounded = false;
             _timeLeftGrounded = Time.time;
-            _anim.SetBool("Grounded", false);
             transform.SetParent(null);
+        }
+
+        if (IsGrounded)
+        {
+            _anim.SetBool("Falling", false);
+            _anim.SetBool("Jumped", false);
+        }
+        else
+        {
+            _anim.SetBool("Falling", true);
         }
 
         // Wall detection
@@ -100,6 +114,14 @@ public class PlayerController : MonoBehaviour
         _isAgainstRightWall = Physics.OverlapSphereNonAlloc(transform.position + new Vector3(_wallCheckOffset, 0), _wallCheckRadius, _rightWall, _groundMask) > 0;
         _pushingLeftWall = _isAgainstLeftWall && _inputs.X < 0;
         _pushingRightWall = _isAgainstRightWall && _inputs.X > 0;
+        if(_isAgainstLeftWall || _isAgainstRightWall)
+        {
+            _anim.SetBool("Hanging", true);
+        }
+        else
+        {
+            _anim.SetBool("Hanging", false);
+        }
     }
 
     private void DrawGrounderGizmos()
@@ -184,7 +206,10 @@ public class PlayerController : MonoBehaviour
             }
             else if (IsGrounded || Time.time < _timeLeftGrounded + _coyoteTime || _enableDoubleJump && !_hasDoubleJumped)
             {
-                if (!_hasJumped || _hasJumped && !_hasDoubleJumped) ExecuteJump(new Vector2(_rb.velocity.x, _jumpForce), _hasJumped); // Ground jump
+                if (!_hasJumped || _hasJumped && !_hasDoubleJumped)
+                {
+                    ExecuteJump(new Vector2(_rb.velocity.x, _jumpForce), _hasJumped);
+                }// Ground jump
             }
         }
 
@@ -193,7 +218,7 @@ public class PlayerController : MonoBehaviour
             _rb.velocity = dir;
             //_jumpLaunchPoof.up = _rb.velocity;
             //_jumpParticles.Play();
-            _anim.SetTrigger(doubleJump ? "DoubleJump" : "Jump");
+            _anim.SetBool("Jumped", true);
             _hasDoubleJumped = doubleJump;
             _hasJumped = true;
         }
