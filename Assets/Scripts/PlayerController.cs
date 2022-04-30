@@ -54,6 +54,11 @@ public class PlayerController : MonoBehaviour
         }
 
         _facingLeft = _inputs.RawX != 1 && (_inputs.RawX == -1 || _facingLeft);
+        if(_inputs.RawX == 0)
+        {
+            Vector3 facingDot = Input.mousePosition;
+            _facingLeft = facingDot.x < (Screen.width / 2);
+        }
         if (!_grabbing) SetFacingDirection(_facingLeft); // Don't turn while grabbing the wall
     }
 
