@@ -4,6 +4,7 @@ namespace Assets.Scripts
 {
     public class KeyboardInput : MonoBehaviour
     {
+        bool pause = false;
         [SerializeField] private CharacterMovement _movement;
 
         private void FixedUpdate()

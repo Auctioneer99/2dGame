@@ -15,23 +15,32 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private Animator _anim;
+    [SerializeField] private int UnpauseTimeDelay = 2;
+    bool pause = false;
+    private float TimePaused;
     private FrameInputs _inputs;
+    
 
     private void Update()
     {
-        GatherInputs();
+        if (!pause)
+        {
+            GatherInputs();
 
-        HandleGrounding();
+            HandleGrounding();
 
-        HandleWalking();
+            HandleWalking();
 
-        HandleJumping();
+            HandleJumping();
 
-        HandleWallSlide();
+            HandleWallSlide();
 
-        HandleWallGrab();
+            HandleWallGrab();
 
-        HandleDashing();
+            HandleDashing();
+        }
+
+        HandlePause();
     }
 
     #region Inputs
@@ -64,9 +73,28 @@ public class PlayerController : MonoBehaviour
 
     private void SetFacingDirection(bool left)
     {
-        _anim.transform.rotation = left ? Quaternion.Euler(0, -90, 0) : Quaternion.Euler(0, 90, 0);
+        if (!pause)
+        {
+            _anim.transform.rotation = left ? Quaternion.Euler(0, -90, 0) : Quaternion.Euler(0, 90, 0);
+        }
     }
-
+    public void HandlePause()
+    {
+        if (Input.GetButtonDown("Cancel"))
+        {
+            if (!pause && Time.time - TimePaused > UnpauseTimeDelay)
+            {
+                pause = true;
+                Time.timeScale = 0;
+            }
+            else
+            {
+                pause = false;
+                TimePaused = Time.time;
+                Time.timeScale = 1;
+            }
+        }
+    }
     #endregion
 
     #region Detection
