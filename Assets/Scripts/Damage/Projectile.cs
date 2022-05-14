@@ -25,6 +25,7 @@ namespace Assets.Scripts.Damage
 
         private void Update()
         {
+            if()
             _rigidBody.MovePosition(_rigidBody.position + Velocity);
             if (_timeCreated + TIME_ALIVE < Time.time)
             {
