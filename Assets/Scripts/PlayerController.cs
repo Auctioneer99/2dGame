@@ -25,13 +25,15 @@ public class PlayerController : MonoBehaviour
     {
         if (!pause)
         {
-            GatherInputs();
+            HandleInputs();
 
             HandleGrounding();
 
-            HandleWalking();
+            //HandleWalking(Input.GetKey(KeyCode.LeftArrow), Input.GetKey(KeyCode.RightArrow));
 
-            HandleJumping();
+            //HandleJumping(); //Input.GetKeyDown(KeyCode.Space)
+
+            HandleFalling();
 
             HandleWallSlide();
 
@@ -47,12 +49,16 @@ public class PlayerController : MonoBehaviour
 
     private bool _facingLeft;
 
-    private void GatherInputs()
+    public void SetInputs(float horizontalRaw, float verticalRaw, float horizontal, float vertical)
     {
-        _inputs.RawX = (int)Input.GetAxisRaw("Horizontal");
-        _inputs.RawY = (int)Input.GetAxisRaw("Vertical");
-        _inputs.X = Input.GetAxis("Horizontal");
-        _inputs.Y = Input.GetAxis("Vertical");
+        _inputs.RawX = (int)horizontalRaw;
+        _inputs.RawY = (int)verticalRaw;
+        _inputs.X = horizontal;
+        _inputs.Y = vertical;
+    }
+
+    private void HandleInputs()
+    {
         if (Math.Abs(_inputs.X) > 0 && IsGrounded)
         {
             _anim.SetBool("isWalking", true);
@@ -177,7 +183,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _acceleration = 2;
     [SerializeField] private float _currentMovementLerpSpeed = 100;
 
-    private void HandleWalking()
+    public void HandleWalking(bool walkLeft, bool walkRight)
     {
         // Slowly release control after wall jump
         _currentMovementLerpSpeed = Mathf.MoveTowards(_currentMovementLerpSpeed, 100, _wallJumpMovementLerp * Time.deltaTime);
@@ -186,12 +192,12 @@ public class PlayerController : MonoBehaviour
         // This can be done using just X & Y input as they lerp to max values, but this gives greater control over velocity acceleration
         var acceleration = IsGrounded ? _acceleration : _acceleration * 0.5f;
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (walkLeft)
         {
             if (_rb.velocity.x > 0) _inputs.X = 0; // Immediate stop and turn. Just feels better
             _inputs.X = Mathf.MoveTowards(_inputs.X, -1, acceleration * Time.deltaTime);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (walkRight)
         {
             if (_rb.velocity.x < 0) _inputs.X = 0;
             _inputs.X = Mathf.MoveTowards(_inputs.X, 1, acceleration * Time.deltaTime);
@@ -226,10 +232,10 @@ public class PlayerController : MonoBehaviour
     private bool _hasJumped;
     private bool _hasDoubleJumped;
 
-    private void HandleJumping()
+    public void HandleJumping()
     {
         if (_dashing) return;
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (true)
         {
             if (_grabbing || !IsGrounded && (_isAgainstLeftWall || _isAgainstRightWall))
             {
@@ -255,9 +261,14 @@ public class PlayerController : MonoBehaviour
             _hasDoubleJumped = doubleJump;
             _hasJumped = true;
         }
+    }
+
+    private void HandleFalling()
+    {
 
         // Fall faster and allow small jumps. _jumpVelocityFalloff is the point at which we start adding extra gravity. Using 0 causes floating
-        if (_rb.velocity.y < _jumpVelocityFalloff || _rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+
+        if (_rb.velocity.y < _jumpVelocityFalloff || _rb.velocity.y > 0) //  && !Input.GetKey(KeyCode.Space)
             _rb.velocity += _fallMultiplier * Physics.gravity.y * Vector3.up * Time.deltaTime;
     }
 

@@ -5,24 +5,22 @@ namespace Assets.Scripts
     public class KeyboardInput : MonoBehaviour
     {
         bool pause = false;
-        [SerializeField] private CharacterMovement _movement;
+        [SerializeField] private PlayerController _controller;
 
-        private void FixedUpdate()
+        private void Update()
         {
-            float horizontal = Input.GetAxis("Horizontal");
+            _controller.SetInputs(
+                Input.GetAxisRaw("Horizontal"),
+                Input.GetAxisRaw("Vertical"),
+                Input.GetAxis("Horizontal"),
+                Input.GetAxis("Vertical")
+                );
 
-            _movement.Move(new Vector3(0, 0, horizontal));
+            _controller.HandleWalking(Input.GetKey(KeyCode.LeftArrow), Input.GetKey(KeyCode.RightArrow));
 
-            bool jump = Input.GetButton("Jump");
-            if (jump)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                _movement.Jump();
-            }
-
-            bool changeFravity = Input.GetKey(KeyCode.E);
-            if (changeFravity)
-            {
-                _movement.ChangeGravity();
+                _controller.HandleJumping();
             }
         }
     }
