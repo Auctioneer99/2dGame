@@ -25,8 +25,7 @@ namespace Assets.Scripts.Damage
 
         private void Update()
         {
-            if()
-            _rigidBody.MovePosition(_rigidBody.position + Velocity);
+            _rigidBody.MovePosition(_rigidBody.position + Velocity * Time.timeScale);
             if (_timeCreated + TIME_ALIVE < Time.time)
             {
                 Destroy(gameObject);

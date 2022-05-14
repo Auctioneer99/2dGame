@@ -11,7 +11,7 @@ namespace Assets.Scripts
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && Time.timeScale > 0)
             {
                 Vector3 deltaVector = Input.mousePosition;
                 deltaVector.x = deltaVector.x / (Screen.width / 2) - 1;
