@@ -24,7 +24,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
             Debug.Log("Exited");
         }
 
-        public void Update()
+        public void Update(float deltaTime)
         {
             if (Input.GetKey(KeyCode.V))
             {

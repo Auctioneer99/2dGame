@@ -24,7 +24,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
 
         }
 
-        public void Update()
+        public void Update(float deltaTime)
         {
             if (Input.GetKey(KeyCode.V))
             {
@@ -32,7 +32,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
             }
             if (Input.GetKey(KeyCode.C))
             {
-                _changer.ChangeState<LeftRightMoveState>();
+                _changer.ChangeState<IdleState>();
             }
         }
     }

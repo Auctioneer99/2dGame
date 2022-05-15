@@ -25,7 +25,17 @@ namespace Assets.AI.Core.SimpleBehaviour.State
 
         }
 
-        public void Update()
+        public void Enter<S>(S last) where S : IState<AIStateModel>
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Exit<S>(S next) where S : IState<AIStateModel>
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Update(float deltaTime)
         {
             var moved = false;
             if(isMovingLeft == false && _model.ColliderChecker.CollidingRight == false)

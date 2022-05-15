@@ -1,5 +1,7 @@
 ﻿using Assets.AI.Detection;
+using Assets.AI.Detection.Aim;
 using Assets.AI.State;
+using UnityEngine.AI;
 
 namespace Assets.AI.Core.SimpleBehaviour
 {
@@ -9,10 +11,16 @@ namespace Assets.AI.Core.SimpleBehaviour
 
         public PlayerController PlayerController { get; private set; }
 
-        public AIStateModel(IColliderChecker colliderChecker, PlayerController playerController)
+        public NavMeshAgent NavigationAgent { get; private set; }
+
+        public IAimProvider AimProvider { get; private set; }
+
+        public AIStateModel(IColliderChecker colliderChecker, PlayerController playerController, NavMeshAgent navMeshAgent, IAimProvider aimProvider)
         {
             ColliderChecker = colliderChecker;
             PlayerController = playerController;
+            NavigationAgent = navMeshAgent;
+            AimProvider = aimProvider;
         }
     }
 }

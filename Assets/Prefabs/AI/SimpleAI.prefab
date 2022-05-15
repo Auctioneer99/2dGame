@@ -358,6 +358,7 @@ GameObject:
   - component: {fileID: 3468586168741059435}
   - component: {fileID: 4238090336440893017}
   - component: {fileID: 1998960197972408746}
+  - component: {fileID: 205963083760135848}
   m_Layer: 8
   m_Name: SimpleAI
   m_TagString: Untagged
@@ -396,6 +397,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _colliderChecker: {fileID: 4689249160430676374}
   _playerController: {fileID: 3468586168741059435}
+  _navMeshAgent: {fileID: 205963083760135848}
+  _aimProvider: {fileID: 0}
 --- !u!136 &4090389846823107267
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -433,7 +436,7 @@ MonoBehaviour:
   _wallCheckOffset: 1
   _wallCheckRadius: 0.2
   IsGrounded: 0
-  _walkSpeed: 20
+  _walkSpeed: 10
   _acceleration: 8
   _currentMovementLerpSpeed: 100
   _jumpForce: 28
@@ -487,6 +490,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a58ac819991795d4d8deb7d3b6e8e78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!195 &205963083760135848
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493153924179786152}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 0
+  m_Acceleration: 0
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &693095857503491111
 PrefabInstance:
   m_ObjectHideFlags: 0
