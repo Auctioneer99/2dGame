@@ -25,7 +25,10 @@ namespace Assets.AI.Core.SimpleBehaviour.State
 
         public void Update(float deltaTime)
         {
-            _agent.SetDestination(_aim.Position);
+            if (_agent.destination != _aim.Position)
+            {
+                _agent.SetDestination(_aim.Position);
+            }
 
             if (_agent.isOnOffMeshLink)
             {
