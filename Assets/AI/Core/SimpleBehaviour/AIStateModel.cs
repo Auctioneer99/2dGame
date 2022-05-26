@@ -9,13 +9,13 @@ namespace Assets.AI.Core.SimpleBehaviour
     {
         public IColliderChecker ColliderChecker { get; private set; }
 
-        public PlayerController PlayerController { get; private set; }
+        public EnemyController PlayerController { get; private set; }
 
         public NavMeshAgent NavigationAgent { get; private set; }
 
         public IAimProvider AimProvider { get; private set; }
 
-        public AIStateModel(IColliderChecker colliderChecker, PlayerController playerController, NavMeshAgent navMeshAgent, IAimProvider aimProvider)
+        public AIStateModel(IColliderChecker colliderChecker, EnemyController playerController, NavMeshAgent navMeshAgent, IAimProvider aimProvider)
         {
             ColliderChecker = colliderChecker;
             PlayerController = playerController;
