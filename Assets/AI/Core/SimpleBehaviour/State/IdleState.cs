@@ -36,6 +36,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
         public void Enter(IState<AIStateModel> last)
         {
             _model.PlayerController.SetInputs(0, 0, -0, 0);
+            _model.PlayerController.HandleWalking(false, false);
             Debug.Log("Жду приказаний");
         }
 

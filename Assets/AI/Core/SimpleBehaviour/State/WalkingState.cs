@@ -55,6 +55,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
             if ((movingLeft || movingRight) == false)
             {
                 _model.PlayerController.SetInputs(0, 0, -0, 0);
+                _model.PlayerController.HandleWalking(false, false);
             }
 
             if (Vector3.Distance(_aim.Position, _model.PlayerController.transform.position) < ACHIVE_DISTANCE)
