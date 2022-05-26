@@ -18,7 +18,7 @@ namespace Assets.AI.Core.SimpleBehaviour
         [SerializeField]
         private ColliderChecker _colliderChecker;
         [SerializeField]
-        private EnemyController _playerController;
+        private PlayerController _playerController;
         [SerializeField]
         private NavMeshAgent _navMeshAgent;
         [SerializeField]
