@@ -1,5 +1,6 @@
 ﻿using Assets.AI.Detection.Aim;
 using Assets.AI.Detection.NavMesh;
+using Assets.AI.Detection.Player;
 using Assets.AI.State;
 using UnityEngine;
 using UnityEngine.AI;
@@ -60,6 +61,11 @@ namespace Assets.AI.Core.SimpleBehaviour.State
             {
                 _aim.OnComplete();
                 _changer.ChangeState<IdleState>();
+            }
+
+            if (_model.PlayerDetection.IsPlayerVisible(_model.PlayerController.transform.position))
+            {
+                _changer.ChangeState<BattleState>();
             }
         }
 

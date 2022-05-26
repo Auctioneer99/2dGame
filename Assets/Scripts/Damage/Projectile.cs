@@ -32,11 +32,11 @@ namespace Assets.Scripts.Damage
             }
         }
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnTriggerEnter(Collider other)
         {
-            if (collision.gameObject != Host)
+            if (other.gameObject != Host)
             {
-                var health = collision.gameObject.GetComponent<AHealth>();
+                var health = other.GetComponent<AHealth>();
                 if (health != null)
                 {
                     health.TakeDamage();

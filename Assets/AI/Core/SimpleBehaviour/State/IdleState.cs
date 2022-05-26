@@ -26,6 +26,11 @@ namespace Assets.AI.Core.SimpleBehaviour.State
                     _changer.ChangeState<WalkingState>();
                 }
             }
+
+            if (_model.PlayerDetection.IsPlayerVisible(_model.PlayerController.transform.position))
+            {
+                _changer.ChangeState<BattleState>();
+            }
         }
 
         public void Enter(IState<AIStateModel> last)
