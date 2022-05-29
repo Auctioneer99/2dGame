@@ -4,7 +4,6 @@ namespace Assets.Scripts
 {
     public class KeyboardInput : MonoBehaviour
     {
-        bool pause = false;
         [SerializeField] private PlayerController _controller;
 
         private void Update()

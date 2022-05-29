@@ -40,8 +40,6 @@ public class EnemyController : MonoBehaviour
 
         //    HandleDashing();
         }
-
-        HandlePause();
     }
 
     #region Inputs
@@ -106,7 +104,7 @@ public class EnemyController : MonoBehaviour
         {
             IsGrounded = false;
             _timeLeftGrounded = Time.time;
-            transform.SetParent(null);
+            //transform.SetParent(null);
         }
 
         if (IsGrounded)
@@ -140,12 +138,14 @@ public class EnemyController : MonoBehaviour
             SetFacingDirection(true);
             if (_rb.velocity.x > 0) _inputs.X = 0; // Immediate stop and turn. Just feels better
             _inputs.X = Mathf.MoveTowards(_inputs.X, -1, acceleration * Time.deltaTime);
+            _anim.SetBool("isWalking", true);
         }
         else if (walkRight)
         {
             SetFacingDirection(false);
             if (_rb.velocity.x < 0) _inputs.X = 0;
             _inputs.X = Mathf.MoveTowards(_inputs.X, 1, acceleration * Time.deltaTime);
+            _anim.SetBool("isWalking", true);
         }
         else
         {
@@ -155,7 +155,6 @@ public class EnemyController : MonoBehaviour
         var idealVel = new Vector3(_inputs.X * _walkSpeed, _rb.velocity.y);
         // _currentMovementLerpSpeed should be set to something crazy high to be effectively instant. But slowed down after a wall jump and slowly released
         _rb.velocity = Vector3.MoveTowards(_rb.velocity, idealVel, _currentMovementLerpSpeed * Time.deltaTime);
-        _anim.SetBool("isWalking", Math.Abs(_inputs.X) > 0.01 && IsGrounded);
     }
 
     #endregion
