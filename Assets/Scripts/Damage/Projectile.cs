@@ -21,6 +21,7 @@ namespace Assets.Scripts.Damage
         {
             Velocity = velocity;
             Host = host;
+            transform.LookAt(Velocity+transform.position);
         }
 
         private void Update()
