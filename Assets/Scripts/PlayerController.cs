@@ -381,7 +381,7 @@ public class PlayerController : MonoBehaviour
         if (_dashing)
         {
             _rb.velocity = _dashDir * _dashSpeed;
-
+            _anim.SetBool("Rolled", true);
             if (Time.time >= _timeStartedDash + _dashLength)
             {
                 //_dashParticles.Stop();
@@ -393,6 +393,10 @@ public class PlayerController : MonoBehaviour
                 //_dashVisual.Stop();
                 OnStopDashing?.Invoke();
             }
+        }
+        else
+        {
+            _anim.SetBool("Rolled", false);
         }
     }
 
