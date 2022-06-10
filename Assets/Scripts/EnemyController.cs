@@ -20,27 +20,7 @@ public class EnemyController : MonoBehaviour
     bool pause = false;
     private float TimePaused;
     private FrameInputs _inputs;
-
-
-    public void Move(Vector3 direction)
-    {
-        var moveRight = direction.x > 0;
-        if (moveRight)
-        {
-            SetInputs(1, 0, 1, 0);
-            HandleWalking(false, true);
-        }
-        var moveLeft = direction.x < 0;
-        if (moveLeft)
-        {
-            SetInputs(-1, 0, -1, 0);
-            HandleWalking(true, false);
-        }
-        if ((moveLeft || moveRight) == false)
-        {
-            SetInputs(0, 0, -0, 0);
-        }
-    }
+    
 
     private void Update()
     {

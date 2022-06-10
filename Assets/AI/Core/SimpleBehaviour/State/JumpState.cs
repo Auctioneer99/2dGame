@@ -7,8 +7,8 @@ namespace Assets.AI.Core.SimpleBehaviour.State
 {
     public class JumpState : IState<AIStateModel>
     {
-        private const float ACHIEVE_DISTANCE = 1f;
-        private const float JUMP_TIME_BEFORE_WALK = 2f;
+        private const float ACHIEVE_DISTANCE = 0.05f;
+        private const float JUMP_TIME_BEFORE_WALK = 1;
 
         private AIStateModel _model;
         private IStateSwitcher<AIStateModel> _changer;
@@ -43,12 +43,27 @@ namespace Assets.AI.Core.SimpleBehaviour.State
                 }
             }
 
-            _model.PlayerController.Move(_aim - _model.PlayerController.transform.position);
+            var moveRight = _model.PlayerController.transform.position.x < _aim.x;
+            if (moveRight)
+            {
+                _model.PlayerController.SetInputs(1, 0, 1, 0);
+                _model.PlayerController.HandleWalking(false, true);
+            }
+            var moveLeft = _model.PlayerController.transform.position.x > _aim.x;
+            if (moveLeft)
+            {
+                _model.PlayerController.SetInputs(-1, 0, -1, 0);
+                _model.PlayerController.HandleWalking(true, false);
+            }
+            if ((moveLeft || moveRight) == false)
+            {
+                _model.PlayerController.SetInputs(0, 0, -0, 0);
+            }
 
-            var distance = Vector3.Distance(_model.PlayerController.transform.position, _aim);//  Math.Abs(_model.PlayerController.transform.position.x - _aim.x);
+            var distance = Math.Abs(_model.PlayerController.transform.position.x - _aim.x);
             if (distance < ACHIEVE_DISTANCE)
             {
-                //_agent.CompleteOffMeshLink();
+                _agent.CompleteOffMeshLink();
                 _changer.ChangeState<WalkingState>();
                 return;
             }
