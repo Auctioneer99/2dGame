@@ -39,26 +39,11 @@ namespace Assets.AI.Core.SimpleBehaviour.State
                 return;
             }
 
+            _model.PlayerController.Move(_agent.velocity);
 
-            var movingRight = _agent.velocity.x > 0;
-            if (movingRight)
-            {
-                _model.PlayerController.SetInputs(1, 0, 1, 0);
-                _model.PlayerController.HandleWalking(false, true);
-            }
-            var movingLeft = _agent.velocity.x < 0;
-            if (movingLeft)
-            {
-                _model.PlayerController.SetInputs(-1, 0, -1, 0);
-                _model.PlayerController.HandleWalking(true, false);
-            }
-            if ((movingLeft || movingRight) == false)
-            {
-                _model.PlayerController.SetInputs(0, 0, -0, 0);
-                _model.PlayerController.HandleWalking(false, false);
-            }
+            var dist = Vector3.Distance(_aim.Position, _model.PlayerController.transform.position);
 
-            if (Vector3.Distance(_aim.Position, _model.PlayerController.transform.position) < ACHIVE_DISTANCE)
+            if (dist < ACHIVE_DISTANCE)
             {
                 _aim.OnComplete();
                 _changer.ChangeState<IdleState>();
