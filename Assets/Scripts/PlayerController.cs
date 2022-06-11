@@ -386,6 +386,7 @@ public class PlayerController : MonoBehaviour
             {
                 //_dashParticles.Stop();
                 _dashing = false;
+                _anim.SetBool("Rolled", false);
                 // Clamp the velocity so they don't keep shooting off
                 _rb.velocity = new Vector3(_rb.velocity.x, _rb.velocity.y > 3 ? 3 : _rb.velocity.y);
                 _rb.useGravity = true;
@@ -393,10 +394,6 @@ public class PlayerController : MonoBehaviour
                 //_dashVisual.Stop();
                 OnStopDashing?.Invoke();
             }
-        }
-        else
-        {
-            _anim.SetBool("Rolled", false);
         }
     }
 

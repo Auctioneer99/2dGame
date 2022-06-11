@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1323,7 +1323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 328073741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 7.37, y: 6.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1713,7 +1713,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6461205941871212283, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.1
+      value: -0.61
       objectReference: {fileID: 0}
     - target: {fileID: 6555831668453634768, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_Layer
@@ -1753,7 +1753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7287291337276607626, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.58
+      value: -8.64
       objectReference: {fileID: 0}
     - target: {fileID: 7287291337276607626, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1793,7 +1793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7393921999943069363, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.74
+      value: -0.97
       objectReference: {fileID: 0}
     - target: {fileID: 7407274324630780164, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_Layer
@@ -2391,7 +2391,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 494152817}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: abe1d03a4b6c1a9429fbf49caa9e5e66, type: 3}
   m_Controller: {fileID: 9100000, guid: 6397dad236ba6934ea501731dbb58baf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -4247,7 +4247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1029369710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.82, y: 0.04, z: 0}
+  m_LocalPosition: {x: 13.93, y: -9.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6193,7 +6193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d04f7351d500db34499fcdcd787038af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -13.32
+      value: -0.92
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d04f7351d500db34499fcdcd787038af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6230,6 +6230,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d04f7351d500db34499fcdcd787038af, type: 3}
       propertyPath: m_Name
       value: PatrolAI_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 9209768275548720269, guid: d04f7351d500db34499fcdcd787038af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.061
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04f7351d500db34499fcdcd787038af, type: 3}
@@ -7119,7 +7123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827187107}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.31, y: 8.2, z: 0}
+  m_LocalPosition: {x: -8.78, y: -9.99, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
