@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -62,6 +63,7 @@ public class PlayerController : MonoBehaviour
     {
         _anim.SetBool("Dead", true);
         dead = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     private void HandleInputs()
     {
