@@ -18,6 +18,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private int UnpauseTimeDelay = 2;
     bool pause = false;
+    public bool dead = false;
     private float TimePaused;
     private FrameInputs _inputs;
     
@@ -48,10 +49,22 @@ public class EnemyController : MonoBehaviour
 
     public void SetInputs(float horizontalRaw, float verticalRaw, float horizontal, float vertical)
     {
-        _inputs.RawX = (int)horizontalRaw;
-        _inputs.RawY = (int)verticalRaw;
-        _inputs.X = horizontal;
-        _inputs.Y = vertical;
+        if(dead)
+        {
+            horizontal = 0;
+            horizontalRaw = 0;
+            vertical = 0;
+            verticalRaw = 0;
+        }    
+            _inputs.RawX = (int)horizontalRaw;
+            _inputs.RawY = (int)verticalRaw;
+            _inputs.X = horizontal;
+            _inputs.Y = vertical;
+    }
+    public void Kill()
+    {
+         _anim.SetBool("Dead", true);
+        dead = true;
     }
 
     private void SetFacingDirection(bool left)
@@ -88,35 +101,34 @@ public class EnemyController : MonoBehaviour
 
     private void HandleGrounding()
     {
-        // Grounder
-        var grounded = _colliderChecker.CollidingBootom;
+            // Grounder
+            var grounded = _colliderChecker.CollidingBootom;
 
-        if (!IsGrounded && grounded)
-        {
-            IsGrounded = true;
-            _hasJumped = false;
-            _currentMovementLerpSpeed = 100;
-            PlayRandomClip(_landClips);
-            OnTouchedGround?.Invoke();
-            //transform.SetParent(_ground[0].transform); - для двигающейся платформы
-        }
-        else if (IsGrounded && !grounded)
-        {
-            IsGrounded = false;
-            _timeLeftGrounded = Time.time;
-            //transform.SetParent(null);
-        }
+            if (!IsGrounded && grounded)
+            {
+                IsGrounded = true;
+                _hasJumped = false;
+                _currentMovementLerpSpeed = 100;
+                PlayRandomClip(_landClips);
+                OnTouchedGround?.Invoke();
+                //transform.SetParent(_ground[0].transform); - для двигающейся платформы
+            }
+            else if (IsGrounded && !grounded)
+            {
+                IsGrounded = false;
+                _timeLeftGrounded = Time.time;
+                //transform.SetParent(null);
+            }
 
-        if (IsGrounded)
-        {
-            _anim.SetBool("Falling", false);
-            _anim.SetBool("Jumped", false);
-        }
-        else
-        {
-            _anim.SetBool("Falling", true);
-        }
-
+            if (IsGrounded)
+            {
+                _anim.SetBool("Falling", false);
+                _anim.SetBool("Jumped", false);
+            }
+            else
+            {
+                _anim.SetBool("Falling", true);
+            }
         // Wall detection
     }
 
@@ -177,32 +189,32 @@ public class EnemyController : MonoBehaviour
 
     public void HandleJumping()
     {
-        if (true)
-        {
-            //if (_grabbing || !IsGrounded && (_isAgainstLeftWall || _isAgainstRightWall))
-            //{
-            //    _timeLastWallJumped = Time.time;
-            //    _currentMovementLerpSpeed = _wallJumpMovementLerp;
-            //    ExecuteJump(new Vector2(_isAgainstLeftWall ? _jumpForce : -_jumpForce, _jumpForce)); // Wall jump
-            //}
-            if (IsGrounded || Time.time < _timeLeftGrounded + _coyoteTime || _enableDoubleJump && !_hasDoubleJumped)
+            if (true)
             {
-                if (!_hasJumped || _hasJumped && !_hasDoubleJumped)
+                //if (_grabbing || !IsGrounded && (_isAgainstLeftWall || _isAgainstRightWall))
+                //{
+                //    _timeLastWallJumped = Time.time;
+                //    _currentMovementLerpSpeed = _wallJumpMovementLerp;
+                //    ExecuteJump(new Vector2(_isAgainstLeftWall ? _jumpForce : -_jumpForce, _jumpForce)); // Wall jump
+                //}
+                if (IsGrounded || Time.time < _timeLeftGrounded + _coyoteTime || _enableDoubleJump && !_hasDoubleJumped)
                 {
-                    ExecuteJump(new Vector2(_rb.velocity.x, _jumpForce), _hasJumped);
-                }// Ground jump
+                    if (!_hasJumped || _hasJumped && !_hasDoubleJumped)
+                    {
+                        ExecuteJump(new Vector2(_rb.velocity.x, _jumpForce), _hasJumped);
+                    }// Ground jump
+                }
             }
-        }
 
-        void ExecuteJump(Vector3 dir, bool doubleJump = false)
-        {
-            _rb.velocity = dir;
-            //_jumpLaunchPoof.up = _rb.velocity;
-            //_jumpParticles.Play();
-            _anim.SetBool("Jumped", true);
-            _hasDoubleJumped = doubleJump;
-            _hasJumped = true;
-        }
+            void ExecuteJump(Vector3 dir, bool doubleJump = false)
+            {
+                _rb.velocity = dir;
+                //_jumpLaunchPoof.up = _rb.velocity;
+                //_jumpParticles.Play();
+                _anim.SetBool("Jumped", true);
+                _hasDoubleJumped = doubleJump;
+                _hasJumped = true;
+            }
     }
 
     private void HandleFalling()

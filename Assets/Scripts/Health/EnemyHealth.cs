@@ -10,7 +10,16 @@ namespace Assets.Scripts.Health
     {
         public override void TakeDamage()
         {
-            Destroy(gameObject);
+            EnemyController enemy = GetComponent<EnemyController>();
+            PlayerController character = GetComponent<PlayerController>();
+            if(enemy == null)
+            {
+                character.Kill();
+            }
+            else
+            {
+                enemy.Kill();
+            }
         }
     }
 }

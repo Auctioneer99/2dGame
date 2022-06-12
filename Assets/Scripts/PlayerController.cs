@@ -17,13 +17,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator _anim;
     [SerializeField] private int UnpauseTimeDelay = 2;
     bool pause = false;
+    public bool dead = false;
     private float TimePaused;
     private FrameInputs _inputs;
     
 
     private void Update()
     {
-        if (!pause)
+        if (!pause && !dead)
         {
             HandleInputs();
 
@@ -57,6 +58,11 @@ public class PlayerController : MonoBehaviour
         _inputs.Y = vertical;
     }
 
+    public void Kill()
+    {
+        _anim.SetBool("Dead", true);
+        dead = true;
+    }
     private void HandleInputs()
     {
         if (Math.Abs(_inputs.X) > 0 && IsGrounded)

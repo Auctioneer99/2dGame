@@ -22,20 +22,23 @@ namespace Assets.AI.Core.SimpleBehaviour.State
 
         public void Update(float deltaTime)
         {
-            var player = _detection.Player;
-            if (_detection.IsPlayerVisible(_model.PlayerController.transform.position))
+            if (!_model.PlayerController.dead)
             {
-                _lastSeenLocation = player.transform.position;
-            }
-            else
-            {
-                _model.AddPrimaryAim(_lastSeenLocation);
-                _changer.ChangeState<WalkingState>();
-                return;
-            }
+                var player = _detection.Player;
+                if (_detection.IsPlayerVisible(_model.PlayerController.transform.position))
+                {
+                    _lastSeenLocation = player.transform.position;
+                }
+                else
+                {
+                    _model.AddPrimaryAim(_lastSeenLocation);
+                    _changer.ChangeState<WalkingState>();
+                    return;
+                }
 
-            _model.ShootExcecutor.Shoot(player.transform.position - _model.PlayerController.transform.position);
-            //Shoot;
+                _model.ShootExcecutor.Shoot(player.transform.position - _model.PlayerController.transform.position);
+                //Shoot;
+            }
         }
 
         public void Enter(IState<AIStateModel> last)

@@ -38,7 +38,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
         public void Update(float deltaTime)
         {
             var moved = false;
-            if(isMovingLeft == false && _model.ColliderChecker.CollidingRight == false)
+            if (isMovingLeft == false && _model.ColliderChecker.CollidingRight == false)
             {
                 if (_model.ColliderChecker.HasGroundRight)
                 {

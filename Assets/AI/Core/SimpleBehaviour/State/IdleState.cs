@@ -18,24 +18,30 @@ namespace Assets.AI.Core.SimpleBehaviour.State
 
         public void Update(float deltaTime)
         {
-            var aim = _model.AimProvider.getAim();
-            if (aim != null)
+            if (!_model.PlayerController.dead)
             {
-                if (Vector3.Distance(aim.Position, _model.PlayerController.transform.position) > ACHIEVE_DISTANCE)
+                var aim = _model.AimProvider.getAim();
+                if (aim != null)
                 {
-                    _changer.ChangeState<WalkingState>();
+                    if (Vector3.Distance(aim.Position, _model.PlayerController.transform.position) > ACHIEVE_DISTANCE)
+                    {
+                        _changer.ChangeState<WalkingState>();
+                    }
                 }
-            }
 
-            if (_model.PlayerDetection.IsPlayerVisible(_model.PlayerController.transform.position))
-            {
-                _changer.ChangeState<BattleState>();
+                if (_model.PlayerDetection.IsPlayerVisible(_model.PlayerController.transform.position))
+                {
+                    _changer.ChangeState<BattleState>();
+                }
             }
         }
 
         public void Enter(IState<AIStateModel> last)
         {
-            _model.PlayerController.SetInputs(0, 0, -0, 0);
+            if (!_model.PlayerController.dead)
+            {
+                _model.PlayerController.SetInputs(0, 0, -0, 0);
+            }
             _model.PlayerController.HandleWalking(false, false);
             Debug.Log("Жду приказаний");
         }

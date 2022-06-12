@@ -28,7 +28,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
         {
             if (_agent.destination != _aim.Position)
             {
-                _agent.SetDestination(_aim.Position);
+                    _agent.SetDestination(_aim.Position);
             }
 
             if (_agent.isOnOffMeshLink)
@@ -43,18 +43,18 @@ namespace Assets.AI.Core.SimpleBehaviour.State
             var movingRight = _agent.velocity.x > 0;
             if (movingRight)
             {
-                _model.PlayerController.SetInputs(1, 0, 1, 0);
+                    _model.PlayerController.SetInputs(1, 0, 1, 0);
                 _model.PlayerController.HandleWalking(false, true);
             }
             var movingLeft = _agent.velocity.x < 0;
             if (movingLeft)
             {
-                _model.PlayerController.SetInputs(-1, 0, -1, 0);
+                    _model.PlayerController.SetInputs(-1, 0, -1, 0);
                 _model.PlayerController.HandleWalking(true, false);
             }
             if ((movingLeft || movingRight) == false)
             {
-                _model.PlayerController.SetInputs(0, 0, -0, 0);
+                    _model.PlayerController.SetInputs(0, 0, -0, 0);
                 _model.PlayerController.HandleWalking(false, false);
             }
 
