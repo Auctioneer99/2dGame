@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: d4fc5ba30f70e5b4f81259bd0d0a0bb0
+guid: 2b3110c64aff6e64c99e64b4aa94b286
 ModelImporter:
   serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: jump enemy
+    second: jump  pistol enemy
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,11 +36,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: jump enemy
+      name: jump  pistol enemy
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 25
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
