@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2124,6 +2124,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3658166640129498667, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
+      propertyPath: _bulletSource
+      value: 
+      objectReference: {fileID: 1389103467}
     - target: {fileID: 3675487905524301421, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -4571,6 +4575,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1477078333429226132, guid: 7490826c95aea1247b61303c81c99513, type: 3}
   m_PrefabInstance: {fileID: 845033830}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &862282090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4043241439066821443, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
+  m_PrefabInstance: {fileID: 492243427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &877384360 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8736092007347027283, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
@@ -6816,6 +6825,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1389103467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4043241439066821443, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
+  m_PrefabInstance: {fileID: 2104272874}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1418318659
 GameObject:
   m_ObjectHideFlags: 0
@@ -7302,6 +7316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 2448725762859484810, guid: 2e06f5c5080111e48b06a6b21206bc15, type: 3}
   _player: {fileID: 136047103}
+  _bulletSource: {fileID: 862282090}
   _projectileSpeed: 0.2
 --- !u!1001 &1621566073
 PrefabInstance:
@@ -7734,6 +7749,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+--- !u!1 &1681227979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4043241439066821443, guid: 726cd21416e138640a4f2575ffe04009, type: 3}
+  m_PrefabInstance: {fileID: 190047848}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1689009177
 GameObject:
   m_ObjectHideFlags: 0
@@ -9819,6 +9839,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3658166640129498667, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
+      propertyPath: _bulletSource
+      value: 
+      objectReference: {fileID: 1681227979}
     - target: {fileID: 3675487905524301421, guid: b4e122f1f6ca394429432158fe1121ca, type: 3}
       propertyPath: m_Layer
       value: 8

@@ -36,7 +36,7 @@ namespace Assets.AI.Core.SimpleBehaviour.State
                     return;
                 }
 
-                _model.ShootExcecutor.Shoot(player.transform.position - _model.PlayerController.transform.position);
+                _model.ShootExcecutor.Shoot(player.transform.position - _model.PlayerController.transform.GetChild(2).GetChild(1).GetChild(2).GetChild(0).GetChild(0).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(5).position);
                 //Shoot;
             }
         }

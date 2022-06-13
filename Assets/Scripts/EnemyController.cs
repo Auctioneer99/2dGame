@@ -21,7 +21,6 @@ public class EnemyController : MonoBehaviour
     public bool dead = false;
     private float TimePaused;
     private FrameInputs _inputs;
-    
 
     private void Update()
     {

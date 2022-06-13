@@ -7,6 +7,7 @@ namespace Assets.Scripts
     {
         [SerializeField] private Projectile _projectilePrefab;
         [SerializeField] private GameObject _player;
+        [SerializeField] private GameObject _bulletSource;
         [SerializeField] private float _projectileSpeed;
 
         private void Update()
@@ -18,7 +19,7 @@ namespace Assets.Scripts
                 deltaVector.y = deltaVector.y / (Screen.height / 2) - 1;
                 deltaVector.z = 0;
 
-                var projectile = Instantiate(_projectilePrefab, _player.transform.position, Quaternion.identity);
+                var projectile = Instantiate(_projectilePrefab, _bulletSource.transform.position, Quaternion.identity);
                 projectile.Init(deltaVector.normalized * _projectileSpeed , _player);
             }
         }
