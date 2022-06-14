@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159653606482458126}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.95, z: 0}
+  m_LocalPosition: {x: 0, y: -0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -312,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8068741787282039286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.61, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -411,13 +411,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7287291337276607626}
-  - component: {fileID: 5565590989680343200}
   - component: {fileID: 4238090336440893017}
   - component: {fileID: 1998960197972408746}
   - component: {fileID: 205963083760135848}
   - component: {fileID: 3658166640129498667}
   - component: {fileID: 550400869}
   - component: {fileID: 2800584206146203573}
+  - component: {fileID: 7432728793207214030}
   m_Layer: 8
   m_Name: SimpleAI
   m_TagString: Untagged
@@ -443,24 +443,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5565590989680343200
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8493153924179786152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18f379b59e3afd44981406acee838e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _colliderChecker: {fileID: 4689249160430676374}
-  _playerController: {fileID: 550400869}
-  _navMeshAgent: {fileID: 205963083760135848}
-  _aimProvider: {fileID: 0}
-  _playerDetection: {fileID: 8736092007347027283}
-  _shootExcecutor: {fileID: 3658166640129498667}
 --- !u!54 &4238090336440893017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -525,6 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 2448725762859484810, guid: 2e06f5c5080111e48b06a6b21206bc15, type: 3}
   _player: {fileID: 8493153924179786152}
+  _bulletSource: {fileID: 955148813974307882}
   _projectileSpeed: 0.1
   _cooldown: 3
 --- !u!114 &550400869
@@ -542,6 +525,7 @@ MonoBehaviour:
   _rb: {fileID: 4238090336440893017}
   _anim: {fileID: 6591114432012976530}
   UnpauseTimeDelay: 2
+  dead: 0
   _colliderChecker: {fileID: 4689249160430676374}
   IsGrounded: 0
   _walkSpeed: 4
@@ -573,6 +557,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7432728793207214030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493153924179786152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18f379b59e3afd44981406acee838e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _colliderChecker: {fileID: 4689249160430676374}
+  _playerController: {fileID: 550400869}
+  _navMeshAgent: {fileID: 205963083760135848}
+  _aimProvider: {fileID: 0}
+  _playerDetection: {fileID: 8736092007347027283}
+  _shootExcecutor: {fileID: 3658166640129498667}
 --- !u!1001 &2949575769462221099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -630,6 +632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d04f7351d500db34499fcdcd787038af, type: 3}
+--- !u!1 &955148813974307882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2715566404302941441, guid: d04f7351d500db34499fcdcd787038af, type: 3}
+  m_PrefabInstance: {fileID: 2949575769462221099}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2607468018483598458 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d04f7351d500db34499fcdcd787038af, type: 3}
@@ -644,7 +651,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2607468018483598458}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: d04f7351d500db34499fcdcd787038af, type: 3}
   m_Controller: {fileID: 9100000, guid: d011d07c48331fb4b926090f62d2ca9c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
