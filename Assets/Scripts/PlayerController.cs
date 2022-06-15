@@ -61,9 +61,12 @@ public class PlayerController : MonoBehaviour
 
     public void Kill()
     {
-        _anim.SetBool("Dead", true);
-        dead = true;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (!_dashing)
+        {
+            _anim.SetBool("Dead", true);
+            dead = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
     private void HandleInputs()
     {
@@ -76,12 +79,9 @@ public class PlayerController : MonoBehaviour
             _anim.SetBool("isWalking", false);
         }
 
-        _facingLeft = _inputs.RawX != 1 && (_inputs.RawX == -1 || _facingLeft);
-        if(_inputs.RawX == 0)
-        {
-            Vector3 facingDot = Input.mousePosition;
-            _facingLeft = facingDot.x < (Screen.width / 2);
-        }
+        //  _facingLeft = _inputs.RawX != 1 && (_inputs.RawX == -1 || _facingLeft);
+        Vector3 facingDot = Input.mousePosition;
+        _facingLeft = facingDot.x < (Screen.width / 2);
         if (!_grabbing) SetFacingDirection(_facingLeft); // Don't turn while grabbing the wall
     }
 
@@ -199,7 +199,11 @@ public class PlayerController : MonoBehaviour
         if (_dashing) return;
         // This can be done using just X & Y input as they lerp to max values, but this gives greater control over velocity acceleration
         var acceleration = IsGrounded ? _acceleration : _acceleration * 0.5f;
+        _anim.SetBool("Backward", !_facingLeft & _inputs.RawX < 0 | _facingLeft & _inputs.RawX > 0);
+        if(_inputs.X > 0)
+        {
 
+        }
         if (walkLeft)
         {
             if (_rb.velocity.x > 0) _inputs.X = 0; // Immediate stop and turn. Just feels better
