@@ -1,38 +1,71 @@
-<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>450</x><y>268</y><w>320</w><h>90</h></coordinates><panel_attributes>/IState&lt;T&gt; where T: IStateModel/
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>&lt;diagram program="umletino" version="14.4.0-SNAPSHOT"&gt;&lt;zoom_level&gt;10&lt;/zoom_level&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1540&lt;/x&gt;&lt;y&gt;474&lt;/y&gt;&lt;w&gt;370&lt;/w&gt;&lt;h&gt;120&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;DebugState
 --
+- _model: AIStateModel
+- _changer: IStateSwitcher&amp;lt;AIStateModel&amp;gt;
 --
-+ Initialize(switcher: IStateSwitcher&lt;T&gt;, model: T): void
++ Initialize(switcher: IStateSwitcher&amp;lt;T&amp;gt;, model: AIStateModel): void
 + Update(deltaTime: float): void
-+ Enter(last: IState&lt;T&gt;): void
-+ Exit(next: IState&lt;T&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>388</y><w>310</w><h>40</h></coordinates><panel_attributes>/IStateModel/
++ Enter(last: IState&amp;lt;AIStateModel&amp;gt;): void
++ Exit(next: IState&amp;lt;AIStateModel&amp;gt;): void&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1540&lt;/x&gt;&lt;y&gt;324&lt;/y&gt;&lt;w&gt;370&lt;/w&gt;&lt;h&gt;140&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;LeftRightMoveState
 --
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>90</x><y>268</y><w>310</w><h>50</h></coordinates><panel_attributes>/IStateSwitcher&lt;T&gt; where T : IStateModel/
+- _model: AIStateModel
+- _changer: IStateSwitcher&amp;lt;AIStateModel&amp;gt;
+- _isMovingLeft: bool
 --
++ Initialize(switcher: IStateSwitcher&amp;lt;T&amp;gt;, model: AIStateModel): void
++ Update(deltaTime: float): void
++ Enter(last: IState&amp;lt;AIStateModel&amp;gt;): void
++ Exit(next: IState&amp;lt;AIStateModel&amp;gt;): void&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;1540&lt;/x&gt;&lt;y&gt;164&lt;/y&gt;&lt;w&gt;370&lt;/w&gt;&lt;h&gt;150&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;BattleState
 --
-+ ChangeState&lt;S&gt;() where S : IState&lt;T&gt;, new() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>138</y><w>310</w><h>100</h></coordinates><panel_attributes>StateMachine&lt;T&gt; where T : IStateModel
+- _model: AIStateModel
+- _changer: IStateSwitcher&amp;lt;AIStateModel&amp;gt;
+- _detection: IPlayerDetection
+- _lastSeenLocation: Vector3
 --
-+ CurrentState: IState&lt;T&gt;
-- _stateModel: T
++ Initialize(switcher: IStateSwitcher&amp;lt;T&amp;gt;, model: AIStateModel): void
++ Update(deltaTime: float): void
++ Enter(last: IState&amp;lt;AIStateModel&amp;gt;): void
++ Exit(next: IState&amp;lt;AIStateModel&amp;gt;): void&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;790&lt;/x&gt;&lt;y&gt;164&lt;/y&gt;&lt;w&gt;370&lt;/w&gt;&lt;h&gt;170&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;WalkingState
 --
-+ ChangeState&lt;S&gt;() where S : IState&lt;T&gt;, new(): void
-- GetState&lt;S&gt;() where S : IState&lt;T&gt;, new(): S</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>228</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>300</x><y>308</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>348</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>228</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>410</x><y>228</y><w>40</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>20;160;20;80;10;80;10;60;20;60;20;10</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>288</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>393</x><y>418</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>250</x><y>458</y><w>310</w><h>160</h></coordinates><panel_attributes>/AIStateModel/
+- ACHIEVE_DISTANCE: float
+- _model: AIStateModel
+- _changer: IStateSwitcher&amp;lt;AIStateModel&amp;gt;
+- _agent: NavMeshAgent
+- _aim: IAim
 --
-+ ColliderChecker: IColliderChecker
-+ Controller: EnemyController
-+ NavigationAgent: NavMeshAgent
-+ PlayerDetection: IPlayerDetection
-+ IShootExcecutor: ShootExcecutor
-- _multiAimProvider: MultiAimProvider
++ Initialize(switcher: IStateSwitcher&amp;lt;T&amp;gt;, model: AIStateModel): void
++ Update(deltaTime: float): void
++ Enter(last: IState&amp;lt;AIStateModel&amp;gt;): void
++ Exit(next: IState&amp;lt;AIStateModel&amp;gt;): void&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;790&lt;/x&gt;&lt;y&gt;344&lt;/y&gt;&lt;w&gt;370&lt;/w&gt;&lt;h&gt;210&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;JumpState
 --
-+ GetAimProvider(): IAimProvider
-+ AddPrimaryAim(position:Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>688</y><w>210</w><h>110</h></coordinates><panel_attributes>/IColliderChecker/
+- ACHIEVE_DISTANCE: float
+- JUMP_TIME_BEFORE_WALK: float
+- _model: AIStateModel
+- _changer: IStateSwitcher&amp;lt;AIStateModel&amp;gt;
+- _agent: NavMeshAgent
+- _aim: Vector3
+- _jumped: bool
+- _jumpTimeDelta: float
+--
++ Initialize(switcher: IStateSwitcher&amp;lt;T&amp;gt;, model: AIStateModel): void
++ Update(deltaTime: float): void
++ Enter(last: IState&amp;lt;AIStateModel&amp;gt;): void
++ Exit(next: IState&amp;lt;AIStateModel&amp;gt;): void&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;element&gt;&lt;id&gt;UMLClass&lt;/id&gt;&lt;coordinates&gt;&lt;x&gt;790&lt;/x&gt;&lt;y&gt;564&lt;/y&gt;&lt;w&gt;370&lt;/w&gt;&lt;h&gt;120&lt;/h&gt;&lt;/coordinates&gt;&lt;panel_attributes&gt;DefaultState
+--
+- _model: AIStateModel
+- _changer: IStateSwitcher&amp;lt;AIStateModel&amp;gt;
+--
++ Initialize(switcher: IStateSwitcher&amp;lt;T&amp;gt;, model: AIStateModel): void
++ Update(deltaTime: float): void
++ Enter(last: IState&amp;lt;AIStateModel&amp;gt;): void
++ Exit(next: IState&amp;lt;AIStateModel&amp;gt;): void&lt;/panel_attributes&gt;&lt;additional_attributes&gt;&lt;/additional_attributes&gt;&lt;/element&gt;&lt;/diagram&gt;Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>0</x><y>730</y><w>210</w><h>110</h></coordinates><panel_attributes>/IColliderChecker/
 --
 + CollidingBottom: bool
 + CollidingLeft: bool
 + CollidingRight: bool
 + HasGroundLeft: bool
 + HasGroundRight: bool
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>828</y><w>210</w><h>190</h></coordinates><panel_attributes>ColliderChecker
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>870</y><w>210</w><h>190</h></coordinates><panel_attributes>ColliderChecker
 --
 + CollidingBottom: bool
 + CollidingLeft: bool
@@ -44,7 +77,7 @@
 - _rightSensor: Sensor
 - _leftGround: Sensor
 - _rightGround: Sensor
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>498</y><w>200</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;190;10;10;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>73</x><y>788</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1048</y><w>210</w><h>110</h></coordinates><panel_attributes>Sensor
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>73</x><y>830</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>1090</y><w>210</w><h>110</h></coordinates><panel_attributes>Sensor
 --
 - _collisionCounter: int
 --
@@ -52,11 +85,11 @@
 --
 /UnityEvents/
 - OnTriggetEnter(other: Collider): void
-- OnTriggetExit(other: Collider): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>1008</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>698</y><w>210</w><h>60</h></coordinates><panel_attributes>/IPlayerDetection/
+- OnTriggetExit(other: Collider): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>1050</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>740</y><w>210</w><h>60</h></coordinates><panel_attributes>/IPlayerDetection/
 --
 + Player: PlayerController
 --
-+ IsPlayerVisible(from: Vector3): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>788</y><w>210</w><h>140</h></coordinates><panel_attributes>PlayerDetection
++ IsPlayerVisible(from: Vector3): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>360</x><y>820</y><w>210</w><h>140</h></coordinates><panel_attributes>PlayerDetection
 --
 + DETECTION_LAYER: int
 - _players: List&lt;PlayerController&gt;
@@ -66,10 +99,10 @@
 --
 /UnityEvents/
 - OnTriggerEnter(other: Collider): void
-- OnTriggerExit(other: Collider): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>538</y><w>180</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>160;160;160;140;10;140;10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>353</x><y>748</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>698</y><w>260</w><h>60</h></coordinates><panel_attributes>/IShootExcecutor/
+- OnTriggerExit(other: Collider): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>453</x><y>790</y><w>30</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>670</y><w>260</w><h>60</h></coordinates><panel_attributes>/IShootExcecutor/
 --
 --
-+ Shoot(direction: Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>788</y><w>260</w><h>140</h></coordinates><panel_attributes>ShootExcecutor
++ Shoot(direction: Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>760</y><w>260</w><h>140</h></coordinates><panel_attributes>ShootExcecutor
 --
 - _projectilePrefab: Projectile
 - _player: GameObject
@@ -78,7 +111,7 @@
 - _cooldown: float
 - _lastExcecutionTime: float
 --
-+ Shoot(direction: Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>643</x><y>748</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>530</x><y>958</y><w>260</w><h>190</h></coordinates><panel_attributes>Projectile
++ Shoot(direction: Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>823</x><y>720</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>930</y><w>260</w><h>190</h></coordinates><panel_attributes>Projectile
 --
 + TIME_ALIVE: float
 + Velocity: Vector3
@@ -91,30 +124,30 @@
 /UnityEvents/
 - OnEnable(): void
 - Update(): void
-- OnTriggerEnter(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>650</x><y>918</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>568</y><w>100</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>80;130;80;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>458</y><w>260</w><h>60</h></coordinates><panel_attributes>/IAimProvider/
+- OnTriggerEnter(other: Collider): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>830</x><y>890</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>1030</y><w>260</w><h>60</h></coordinates><panel_attributes>/IAimProvider/
 --
 --
-+ GetAim(): IAim</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>640</x><y>548</y><w>260</w><h>60</h></coordinates><panel_attributes>/IAim/
++ GetAim(): IAim</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1430</x><y>1030</y><w>260</w><h>60</h></coordinates><panel_attributes>/IAim/
 --
 --
 + GetPosition(): Vector3
-+ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>910</x><y>578</y><w>260</w><h>80</h></coordinates><panel_attributes>Aim
++ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1430</x><y>930</y><w>260</w><h>80</h></coordinates><panel_attributes>Aim
 --
 - _location: Transform
 --
 + GetPosition(): Vector3
-+ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1180</x><y>578</y><w>260</w><h>90</h></coordinates><panel_attributes>PatrolAim
++ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1430</x><y>830</y><w>260</w><h>90</h></coordinates><panel_attributes>PatrolAim
 --
 + Achieved: bool
 - _location: Transform
 --
 + GetPosition(): Vector3
-+ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1450</x><y>578</y><w>260</w><h>90</h></coordinates><panel_attributes>PatrolAim
++ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1430</x><y>730</y><w>260</w><h>90</h></coordinates><panel_attributes>PatrolAim
 --
 + event OnComplete: Action&lt;PrimaryAim&gt;
 --
 + GetPosition(): Vector3
-+ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>893</x><y>538</y><w>170</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;30;140;10;150;40</additional_attributes></element><element><id>Relation</id><coordinates><x>893</x><y>538</y><w>450</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;30;150;10;430;10;430;40</additional_attributes></element><element><id>Relation</id><coordinates><x>893</x><y>538</y><w>680</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;30;150;10;660;10;660;40</additional_attributes></element><element><id>Relation</id><coordinates><x>740</x><y>508</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>820</x><y>318</y><w>260</w><h>110</h></coordinates><panel_attributes>AimProvider
++ OnComplete(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1683</x><y>860</y><w>50</w><h>210</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;190;30;190;30;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1683</x><y>780</y><w>50</w><h>290</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;270;30;270;30;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1683</x><y>950</y><w>50</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;100;30;100;30;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>1040</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>910</y><w>260</w><h>110</h></coordinates><panel_attributes>AimProvider
 --
 - _location: Transform
 - _aim: Aim
@@ -122,18 +155,18 @@
 + GetAim(): IAim
 --
 /UnityEvents/
-- OnEnable(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1120</x><y>318</y><w>260</w><h>70</h></coordinates><panel_attributes>PatrolAimProvider
+- OnEnable(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>830</y><w>260</w><h>70</h></coordinates><panel_attributes>PatrolAimProvider
 --
 - _aims: Queue&lt;PatrolAim&gt;
 --
-+ GetAim(): IAim</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>813</x><y>418</y><w>80</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;40;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>920</x><y>418</y><w>200</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>180;160;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1420</x><y>318</y><w>260</w><h>150</h></coordinates><panel_attributes>MultiAimProvider
++ GetAim(): IAim</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1113</x><y>940</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>30;110;10;110;10;10;30;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>950</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1140</x><y>670</y><w>260</w><h>150</h></coordinates><panel_attributes>MultiAimProvider
 --
 - _secondaryProvider: IAimProvider
 - _primaryAim: PrimaryAim
 --
 + GetAim(): IAim
 + AddPrimaryAim(position: Vector3): void
-- OnComplete(aim: PrimaryAim): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1210</x><y>378</y><w>90</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;200;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1490</x><y>458</y><w>30</w><h>140</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;120;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>478</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>18</y><w>320</w><h>150</h></coordinates><panel_attributes>BattleState
+- OnComplete(aim: PrimaryAim): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>840</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1390</x><y>790</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>0</y><w>370</w><h>150</h></coordinates><panel_attributes>BattleState
 --
 - _model: AIStateModel
 - _changer: IStateSwitcher&lt;AIStateModel&gt;
@@ -143,7 +176,7 @@
 + Initialize(switcher: IStateSwitcher&lt;T&gt;, model: AIStateModel): void
 + Update(deltaTime: float): void
 + Enter(last: IState&lt;AIStateModel&gt;): void
-+ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1020</x><y>18</y><w>320</w><h>120</h></coordinates><panel_attributes>DefaultState
++ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>400</y><w>370</w><h>120</h></coordinates><panel_attributes>DefaultState
 --
 - _model: AIStateModel
 - _changer: IStateSwitcher&lt;AIStateModel&gt;
@@ -151,7 +184,7 @@
 + Initialize(switcher: IStateSwitcher&lt;T&gt;, model: AIStateModel): void
 + Update(deltaTime: float): void
 + Enter(last: IState&lt;AIStateModel&gt;): void
-+ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1350</x><y>18</y><w>370</w><h>210</h></coordinates><panel_attributes>BattleState
++ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>180</y><w>370</w><h>210</h></coordinates><panel_attributes>JumpState
 --
 - ACHIEVE_DISTANCE: float
 - JUMP_TIME_BEFORE_WALK: float
@@ -165,7 +198,7 @@
 + Initialize(switcher: IStateSwitcher&lt;T&gt;, model: AIStateModel): void
 + Update(deltaTime: float): void
 + Enter(last: IState&lt;AIStateModel&gt;): void
-+ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1740</x><y>18</y><w>370</w><h>140</h></coordinates><panel_attributes>LeftRightMoveState
++ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>160</y><w>370</w><h>140</h></coordinates><panel_attributes>LeftRightMoveState
 --
 - _model: AIStateModel
 - _changer: IStateSwitcher&lt;AIStateModel&gt;
@@ -174,7 +207,7 @@
 + Initialize(switcher: IStateSwitcher&lt;T&gt;, model: AIStateModel): void
 + Update(deltaTime: float): void
 + Enter(last: IState&lt;AIStateModel&gt;): void
-+ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2130</x><y>18</y><w>370</w><h>170</h></coordinates><panel_attributes>WalkingState
++ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>790</x><y>0</y><w>370</w><h>170</h></coordinates><panel_attributes>WalkingState
 --
 - ACHIEVE_DISTANCE: float
 - _model: AIStateModel
@@ -185,7 +218,7 @@
 + Initialize(switcher: IStateSwitcher&lt;T&gt;, model: AIStateModel): void
 + Update(deltaTime: float): void
 + Enter(last: IState&lt;AIStateModel&gt;): void
-+ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2510</x><y>18</y><w>370</w><h>170</h></coordinates><panel_attributes>DebugState
++ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>310</y><w>370</w><h>120</h></coordinates><panel_attributes>DebugState
 --
 - _model: AIStateModel
 - _changer: IStateSwitcher&lt;AIStateModel&gt;
@@ -193,4 +226,165 @@
 + Initialize(switcher: IStateSwitcher&lt;T&gt;, model: AIStateModel): void
 + Update(deltaTime: float): void
 + Enter(last: IState&lt;AIStateModel&gt;): void
-+ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element></diagram>
++ Exit(next: IState&lt;AIStateModel&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>170</x><y>400</y><w>310</w><h>40</h></coordinates><panel_attributes>/IStateModel/
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>330</x><y>240</y><w>40</w><h>180</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>20;160;20;80;10;80;10;60;20;60;20;10</additional_attributes></element><element><id>Relation</id><coordinates><x>390</x><y>360</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>310</x><y>300</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>Relation</id><coordinates><x>440</x><y>240</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>240</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>220</x><y>320</y><w>30</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>10</x><y>280</y><w>310</w><h>50</h></coordinates><panel_attributes>/IStateSwitcher&lt;T&gt; where T : IStateModel/
+--
+--
++ ChangeState&lt;S&gt;() where S : IState&lt;T&gt;, new() : void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>280</y><w>320</w><h>90</h></coordinates><panel_attributes>/IState&lt;T&gt; where T: IStateModel/
+--
+--
++ Initialize(switcher: IStateSwitcher&lt;T&gt;, model: T): void
++ Update(deltaTime: float): void
++ Enter(last: IState&lt;T&gt;): void
++ Exit(next: IState&lt;T&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>170</x><y>150</y><w>310</w><h>100</h></coordinates><panel_attributes>StateMachine&lt;T&gt; where T : IStateModel
+--
++ CurrentState: IState&lt;T&gt;
+- _stateModel: T
+--
++ ChangeState&lt;S&gt;() where S : IState&lt;T&gt;, new(): void
+- GetState&lt;S&gt;() where S : IState&lt;T&gt;, new(): S</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1190</x><y>0</y><w>320</w><h>100</h></coordinates><panel_attributes>/IState&lt;T&gt; where T: IStateModel/
+--
+--
++ Initialize(switcher: IStateSwitcher&lt;T&gt;, model: T): void
++ Update(deltaTime: float): void
++ Enter(last: IState&lt;T&gt;): void
++ Exit(next: IState&lt;T&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>40</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>40</y><w>60</w><h>410</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;20;10;20;390;10;390</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>40</y><w>60</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>40;10;20;10;20;200;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>30</y><w>60</w><h>220</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;30;10;30;200;40;200</additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>30</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;40;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1500</x><y>30</y><w>60</w><h>340</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;30;10;30;320;40;320</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1196</x><y>251</y><w>310</w><h>160</h></coordinates><panel_attributes>/AIStateModel/
+--
++ ColliderChecker: IColliderChecker
++ Controller: EnemyController
++ NavigationAgent: NavMeshAgent
++ PlayerDetection: IPlayerDetection
++ IShootExcecutor: ShootExcecutor
+- _multiAimProvider: MultiAimProvider
+--
++ GetAimProvider(): IAimProvider
++ AddPrimaryAim(position:Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>140</y><w>230</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;110;210;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>210</y><w>230</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;40;210;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1150</x><y>400</y><w>230</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>210;10;210;60;10;60</additional_attributes></element><element><id>Relation</id><coordinates><x>1350</x><y>210</y><w>210</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10;190;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1350</x><y>140</y><w>210</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;110;10;10;190;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1350</x><y>400</y><w>210</w><h>50</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;30;190;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1786</x><y>762</y><w>210</w><h>110</h></coordinates><panel_attributes>/IColliderChecker/
+--
++ CollidingBottom: bool
++ CollidingLeft: bool
++ CollidingRight: bool
++ HasGroundLeft: bool
++ HasGroundRight: bool
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1986</x><y>802</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2086</x><y>912</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1946</x><y>952</y><w>210</w><h>60</h></coordinates><panel_attributes>/IPlayerDetection/
+--
++ Player: PlayerController
+--
++ IsPlayerVisible(from: Vector3): bool</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2186</x><y>952</y><w>260</w><h>60</h></coordinates><panel_attributes>/IShootExcecutor/
+--
+--
++ Shoot(direction: Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2266</x><y>912</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;40;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2376</x><y>762</y><w>260</w><h>60</h></coordinates><panel_attributes>/IAimProvider/
+--
+--
++ GetAim(): IAim</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2036</x><y>762</y><w>310</w><h>160</h></coordinates><panel_attributes>/AIStateModel/
+--
++ ColliderChecker: IColliderChecker
++ Controller: EnemyController
++ NavigationAgent: NavMeshAgent
++ PlayerDetection: IPlayerDetection
++ IShootExcecutor: ShootExcecutor
+- _multiAimProvider: MultiAimProvider
+--
++ GetAimProvider(): IAimProvider
++ AddPrimaryAim(position:Vector3): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2336</x><y>782</y><w>60</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>40;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2056</x><y>542</y><w>260</w><h>190</h></coordinates><panel_attributes>EnemyController
+--
+--
++ Move(direction: Vector3): void
++ Jump(): void
+- HandleJumping(): void
+- HandleFalling(): void
+- HandleGrounding(): void
+- HandleWalking(): void
+--
+/UnityEvents/
+- Update(): void
+- OnCollisionEnter(collision: Collision): void
+- OnTriggerEnter(other: Collider): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2176</x><y>722</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1113</x><y>790</y><w>50</w><h>280</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>30;260;10;260;10;10;30;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1113</x><y>840</y><w>50</w><h>230</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>30;210;10;210;10;10;30;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>1270</y><w>260</w><h>190</h></coordinates><panel_attributes>Projectile
+--
++ TIME_ALIVE: float
++ Velocity: Vector3
++ Host: GameObject
+- _rigidBody: RigidBody
+- _timeCreated
+--
++ Init(velocity: Vector3, host: GameObject): void
+--
+/UnityEvents/
+- OnEnable(): void
+- Update(): void
+- OnTriggerEnter(other: Collider): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1836</x><y>1272</y><w>210</w><h>60</h></coordinates><panel_attributes>AHealth
+--
+--
++ TakeDamage(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1786</x><y>1282</y><w>70</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1836</x><y>1342</y><w>210</w><h>80</h></coordinates><panel_attributes>EnemyHealth
+--
+--
++ TakeDamage(): void
+--
+/UnityEvents/
+- OnEnable(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2033</x><y>1290</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>13;10;30;10;30;80;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1836</x><y>1432</y><w>210</w><h>80</h></coordinates><panel_attributes>PlayerHealth
+--
+--
++ TakeDamage(): void
+--
+/UnityEvents/
+- OnEnable(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2033</x><y>1290</y><w>50</w><h>200</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>13;10;30;10;30;180;10;180</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1540</x><y>1470</y><w>260</w><h>70</h></coordinates><panel_attributes>DeathArea
+--
+--
+--
+/UnityEvents/
+- OnTriggerEnter(other: Collider): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1786</x><y>1282</y><w>70</w><h>240</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>50;10;30;10;30;220;10;220</additional_attributes></element><element><id>UMLClass</id><coordinates><x>2355</x><y>86</y><w>130</w><h>30</h></coordinates><panel_attributes>DebugState</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2625</x><y>166</y><w>130</w><h>40</h></coordinates><panel_attributes>BattleState</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2365</x><y>166</y><w>120</w><h>40</h></coordinates><panel_attributes>WalkingState</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2095</x><y>166</y><w>110</w><h>40</h></coordinates><panel_attributes>JumpState</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2365</x><y>246</y><w>120</w><h>30</h></coordinates><panel_attributes>DefaultState</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2417</x><y>196</y><w>110</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Запуск уровня</panel_attributes><additional_attributes>10;10;10;50</additional_attributes></element><element><id>Relation</id><coordinates><x>2197</x><y>176</y><w>190</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Необходимо прыгнуть</panel_attributes><additional_attributes>10;20;170;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2197</x><y>156</y><w>190</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Персонаж приземлился</panel_attributes><additional_attributes>170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2477</x><y>156</y><w>170</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Замечен противник</panel_attributes><additional_attributes>150;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2477</x><y>176</y><w>170</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Противник потерян</panel_attributes><additional_attributes>10;20;150;20</additional_attributes></element><element><id>Relation</id><coordinates><x>2417</x><y>106</y><w>150</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Переход в состояние
+для отладки</panel_attributes><additional_attributes>10;10;10;60</additional_attributes></element><element><id>UMLClass</id><coordinates><x>990</x><y>1190</y><w>260</w><h>90</h></coordinates><panel_attributes>KeyboardInput
+--
+- controller: PlayerController
+--
+--
+/UnityEvents/
+- Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>1190</y><w>260</w><h>90</h></coordinates><panel_attributes>MouseInput
+--
+- controller: PlayerController
+--
+--
+/UnityEvents/
+- Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>710</x><y>1330</y><w>260</w><h>140</h></coordinates><panel_attributes>CameraMovement
+--
+- _target: GameObject
+- _camera: Camera
+- _distanceFromObject: float
+- _range: float
+--
++ Move(delta: Vector3): void
+--
+/UnityEvents/
+- Update(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>996</x><y>1302</y><w>260</w><h>330</h></coordinates><panel_attributes>EnemyController
+--
+- slideSpeed: float
+- jumpForce: float
+- gravity: float
+- walkSpeed: float
+- dashRange: float
+--
++ Move(direction: Vector3): void
++ Jump(): void
+- HandleInputs(): void
+- HandleWallSlide(): void
+- HandleWallGrab(): void
+- HandleJumping(): void
+- HandleFalling(): void
+- HandleGrounding(): void
+- HandleWalking(): void
+- HandleDashing(): void
+--
+/UnityEvents/
+- Update(): void
+- OnCollisionEnter(collision: Collision): void
+- OnTriggerEnter(other: Collider): void
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>830</x><y>1270</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>830</x><y>1270</y><w>190</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>170;42;10;40;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1110</x><y>1270</y><w>30</w><h>60</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;32;10;10</additional_attributes></element></diagram>
